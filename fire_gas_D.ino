@@ -39,6 +39,7 @@ void loop() {
   bool danger = (temperature > tempThreshold || gasVoltage > gasVoltThreshold);
   digitalWrite(buzzerPin, danger);
   digitalWrite(ledRedPin, danger);
+  digitalWrite(ledGreenPin, !danger);
 
   u8g2.clearBuffer();
   u8g2.setFont(u8g2_font_ncenB08_tr);
