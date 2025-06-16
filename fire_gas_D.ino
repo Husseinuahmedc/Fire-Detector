@@ -14,6 +14,7 @@ const int ledRedPin = 2;
 // the limits to made beeb noise 
 const float tempThreshold = 35.0;
 const float gasVoltThreshold = 1.5;
+const float adcRefVoltage = 5.0;
 
 // for o/p pins in Arduino 
 void setup() {
@@ -32,7 +33,7 @@ void loop() {
   int tempRaw = analogRead(lm35Pin);
   int gasRaw  = analogRead(mq6Pin);
 
-  float temperature = (tempRaw / 1023.0) * 3.3 * 100.0;  // Equation of temp. read 
+  float temperature = (tempRaw / 1023.0) * adcRefVoltage * 100.0;  // Equation of temp. read
   float gasVoltage  = (gasRaw / 1023.0) * 5.0;           // Equation of gas read
  //boolean
   bool danger = (temperature > tempThreshold || gasVoltage > gasVoltThreshold);
